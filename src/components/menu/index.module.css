@@ -1,0 +1,32 @@
+.menu {
+    background-color: #171d2d;
+    border-radius: 25px;
+    color: rgb(221, 221, 221);
+    margin-bottom: 5px;
+}
+.container {
+    padding: 28px;
+}
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo h2 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.logo h2 span {
+    background-color: #287eff;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+nav.nav {
+    padding: 12px;
+}
+
+.nav button {
+    margin-top: 5px;
+}
