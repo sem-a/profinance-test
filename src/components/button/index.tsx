@@ -14,6 +14,10 @@ type Props = {
     border?: string | undefined;
     margin?: string | number | undefined;
     transition?: string | undefined;
+    display?: string | undefined;
+    alignItems?: string | undefined;
+    justifyContent?: string | undefined;
+    gap?: string | undefined;
 };
 
 export const Button: React.FC<Props> = ({
@@ -24,12 +28,16 @@ export const Button: React.FC<Props> = ({
     paddingBlock = "13px",
     paddingInline = "0px",
     borderRadius = "10px",
-    border = "0px",
+    border,
     color = "white",
     fontWeight = "700",
     fontSize = "16px",
     margin = "",
     transition = "0.5s",
+    display,
+    alignItems,
+    justifyContent,
+    gap
 }) => {
     const [hovered, setHovered] = useState(false);
     return (
@@ -46,6 +54,10 @@ export const Button: React.FC<Props> = ({
                 border,
                 margin,
                 transition,
+                display,
+                alignItems,
+                justifyContent,
+                gap,
             }}
             onMouseEnter={() => {
                 setHovered(true);

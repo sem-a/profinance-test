@@ -5,7 +5,7 @@
     margin-bottom: 5px;
 }
 .container {
-    padding: 28px;
+    padding: 28px 28px 0;
 }
 .flex {
     display: flex;
@@ -29,4 +29,14 @@ nav.nav {
 
 .nav button {
     margin-top: 5px;
+}
+
+.buttonFlexItem {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.buttonFlexItem span {
+    padding-top: 2px;
+    padding-left: 13px;
 }
