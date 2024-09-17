@@ -49,8 +49,8 @@ export const Table = () => {
             const isBarcodeMatch =
                 !barcodeInput || barcode.toString().includes(barcodeInput);
             const isBrandMatch =
-                !brandInput || product_brand.includes(brandInput);
-            const isNameMatch = !nameInput || product_name.includes(nameInput);
+                !brandInput || product_brand.toLowerCase().includes(brandInput.toLowerCase());
+            const isNameMatch = !nameInput || product_name.toLowerCase().includes(nameInput.toLowerCase());
             const isPriceMatch = !priceInput || price === Number(priceInput);
 
             return (
