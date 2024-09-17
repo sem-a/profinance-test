@@ -92,9 +92,4 @@
 {"id":92,"barcode":31619,"product_brand":"Sagem","product_name":"Sagem MY V-75","product_quantity":30,"price":1774},
 {"id":93,"barcode":32538,"product_brand":"Celkon","product_name":"Celkon A98","product_quantity":15,"price":1131},
 {"id":94,"barcode":31845,"product_brand":"ZTE","product_name":"ZTE Grand X2","product_quantity":48,"price":703},
-{"id":95,"barcode":31924,"product_brand":"Samsung","product_name":"Samsung Galaxy Core LTE G386W","product_quantity":82,"price":1226},
-{"id":96,"barcode":32510,"product_brand":"Unnecto","product_name":"Unnecto Drone XL","product_quantity":90,"price":2745},
-{"id":97,"barcode":30448,"product_brand":"Allview","product_name":"Allview P8 Energy","product_quantity":38,"price":1614},
-{"id":98,"barcode":31372,"product_brand":"Motorola","product_name":"Motorola WILDER","product_quantity":38,"price":2556},
-{"id":99,"barcode":30367,"product_brand":"LG","product_name":"LG G3 LTE-A","product_quantity":55,"price":111},
-{"id":100,"barcode":32866,"product_brand":"Samsung","product_name":"Samsung M715 T*OMNIA II","product_quantity":31,"price":2134}]
+{"id":95,"barcode":31924,"product_brand":"Samsung","product_name":"Samsung Galaxy Core LTE G386W","product_quantity":82,"price":1226}]

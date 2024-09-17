@@ -13,6 +13,7 @@ type Props = {
     type?: React.HTMLInputTypeAttribute | undefined;
     id: string | undefined;
     width?: string | undefined;
+    onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined
 };
 type PropsSelect = {
     label: React.ReactNode;
@@ -27,6 +28,7 @@ export const Billet: React.FC<Props> = ({
     placeholder,
     type = "text",
     width,
+    onChange,
 }) => {
     return (
         <div className={styles.flex}>
@@ -36,6 +38,7 @@ export const Billet: React.FC<Props> = ({
                 id={id}
                 type={type}
                 placeholder={placeholder}
+                onChange={onChange}
             />
         </div>
     );

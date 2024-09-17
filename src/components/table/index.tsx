@@ -1,6 +1,6 @@
-import { DataGrid, GridColDef, GridRowsProp } from "@mui/x-data-grid";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import data from "../../DATA.json";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "../button";
 import { Container } from "../container";
 import Papa from "papaparse";
@@ -23,20 +23,57 @@ type TypeTabel = {
 
 export const Table = () => {
     const [tableRow, setTableRow] = useState<TypeTabel[]>([]);
-    const [paginationModel, setPaginationModel] = React.useState({
-        pageSize: 25,
-        page: 0,
-    });
     const [totalSumPrice, setTotalSumPrice] = useState<number>(0);
     const [totalSumCount, setTottalSumCount] = useState<number>(0);
 
+    const [barcodeInput, setBarcodeInput] = useState<string | undefined>(
+        undefined
+    );
+    const [brandInput, setBrandInput] = useState<string | undefined>(undefined);
+    const [nameInput, setNameInput] = useState<string | undefined>(undefined);
+    const [priceInput, setPriceInput] = useState<number | undefined>(undefined);
+
+    const handleFiltrTable = () => {
+        if (
+            !barcodeInput &&
+            !brandInput &&
+            !nameInput &&
+            !priceInput
+        ) {
+            setTableRow(data);
+            return 0;
+        }
+
+        const sortedTableRow = tableRow.filter((item: TypeTabel) => {
+            const { barcode, product_brand, product_name, price } = item;
+            const isBarcodeMatch =
+                !barcodeInput || barcode.toString().includes(barcodeInput);
+            const isBrandMatch =
+                !brandInput || product_brand.includes(brandInput);
+            const isNameMatch = !nameInput || product_name.includes(nameInput);
+            const isPriceMatch = !priceInput || price === Number(priceInput);
+
+            return (
+                isBarcodeMatch && isBrandMatch && isNameMatch && isPriceMatch
+            );
+        });
+
+        setTableRow(sortedTableRow);
+    };
+
     const calcSumm = () => {
-        const sumQuantity = tableRow.reduce((acc, current) => acc + current.product_quantity, 0)
-        const sumPrice = tableRow.reduce((acc, current) => acc + current.price, 0)
+        const sumQuantity = tableRow.reduce(
+            (acc: number, current: TypeTabel) => acc + current.product_quantity,
+            0
+        );
+        const sumPrice = tableRow.reduce(
+            (acc: number, current: TypeTabel) => acc + current.price,
+            0
+        );
 
         setTotalSumPrice(sumPrice);
         setTottalSumCount(sumQuantity);
-    }
+    };
 
     const exportDataToCSV = () => {
         const csv = Papa.unparse(tableRow);
@@ -68,6 +105,10 @@ export const Table = () => {
 
         return updatedRow;
     };
+
+    useEffect(() => {
+        calcSumm();
+    }, [tableRow]);
 
     const columns: GridColDef[] = [
         {
@@ -120,20 +161,37 @@ export const Table = () => {
                     width="95px"
                     label="Баркод"
                     placeholder="32456"
+                    onChange={(event) => {
+                        setBarcodeInput(event.target.value);
+                    }}
                 />
                 <Billet
                     id="brand"
                     width="121px"
                     label="Бренд"
                     placeholder="alcatel"
+                    onChange={(event) => {
+                        setBrandInput(event.target.value);
+                    }}
                 />
                 <Billet
                     id="name"
                     width="135px"
                     label="Название"
                     placeholder="Samsung"
+                    onChange={(event) => {
+                        setNameInput(event.target.value);
+                    }}
                 />
-                <Billet id="size" width="95px" label="Цена" placeholder="213" />
+                <Billet
+                    id="size"
+                    width="95px"
+                    label="Цена"
+                    placeholder="213"
+                    onChange={(event) => {
+                        setPriceInput(Number(event.target.value));
+                    }}
+                />
             </Container>
             <Container
                 display="flex"
@@ -149,6 +207,9 @@ export const Table = () => {
                     borderRadius="21px"
                     fontWeight="400"
                     fontSize="14px"
+                    onClick={() => {
+                        handleFiltrTable();
+                    }}
                 >
                     Сформировать
                 </Button>
@@ -228,7 +289,9 @@ export const Table = () => {
                             background="none"
                             backgroundHover="none"
                             color="#283047"
-                            onClick={() => {handleSaveJson(tableRow, 'DATA')}}
+                            onClick={() => {
+                                handleSaveJson(tableRow, "DATA");
+                            }}
                         >
                             <CreateNewFolder />
                             <span style={{ marginTop: "2px" }}>
@@ -259,11 +322,19 @@ export const Table = () => {
                 </Container>
             </div>
             <DataGrid
-                paginationModel={paginationModel}
-                onPaginationModelChange={setPaginationModel}
                 editMode="row"
                 columns={columns}
-                rows={tableRow}
+                rows={[
+                    ...tableRow,
+                    {
+                        id: 9999999,
+                        barcode: "Итого:",
+                        product_brand: "",
+                        product_name: "",
+                        product_quantity: totalSumCount,
+                        price: totalSumPrice,
+                    },
+                ]}
                 processRowUpdate={handleProcessRowUpdate}
                 onProcessRowUpdateError={(params) => {
                     console.error(params);
