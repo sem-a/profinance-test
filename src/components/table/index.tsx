@@ -34,7 +34,7 @@ export const Table = () => {
     const [priceInput, setPriceInput] = useState<number | undefined>(undefined);
 
     const handleFiltrTable = () => {
-        setTableRow(data);
+
         if (
             !barcodeInput &&
             !brandInput &&
@@ -208,6 +208,7 @@ export const Table = () => {
                     fontWeight="400"
                     fontSize="14px"
                     onClick={() => {
+                        setTableRow(data);
                         handleFiltrTable();
                     }}
                 >
