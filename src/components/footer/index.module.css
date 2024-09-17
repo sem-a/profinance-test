@@ -8,7 +8,7 @@
     color: #67749e;
 }
 .contact {
-    margin: 42px 0px;
+    margin: 21px 0px;
 }
 .flex {
     display: flex;
@@ -16,13 +16,13 @@
     justify-content: flex-start;
     gap: 42px;
     width: 100%;
-    margin-bottom: 28px;
+    margin-bottom: 14px;
 }
 .item_label p {
     font-size:  12px;
 }
 .item_content p {
-    font-size: 16px;
+    font-size: 14px;
 }
 .links {
     display: flex;
@@ -31,9 +31,9 @@
     justify-content: flex-start;
 }
 a.link {
-    font-size: 16px;
+    font-size: 14px;
     color: #67749e;
-    padding: 14px 0px;
+    padding: 10px 0px;
     position: relative;
     width: 100%;
     transition: 0.5s;

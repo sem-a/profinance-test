@@ -47,30 +47,11 @@ export const BilletSelect: React.FC<PropsSelect> = ({
     width,
     options,
 }) => {
-    const [rotate, setRotate] = useState<string>("rotate(0deg)");
-    const [flag, setFlag] = useState<boolean>(false);
-
-    const toggleRotate = (flag: boolean) => {
-        if (flag) {
-            setRotate("rotate(180deg)");
-        } else {
-            setRotate("rotate(0deg)");
-        }
-    };
-
     return (
         <div className={styles.flex}>
             <label htmlFor={id}>{label}</label>
             <>
-                <select
-                    name={id}
-                    id={id}
-                    onClick={() => {
-                        setFlag(!flag);
-                        console.log(flag);
-                        toggleRotate(flag);
-                    }}
-                >
+                <select name={id} id={id}>
                     {options.map((option: Option) => {
                         return (
                             <option value={option.value}>
@@ -79,7 +60,6 @@ export const BilletSelect: React.FC<PropsSelect> = ({
                         );
                     })}
                 </select>
-                <ArrowDropDown style={{ transform: rotate }} />
             </>
         </div>
     );

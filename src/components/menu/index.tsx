@@ -36,7 +36,7 @@ export const Menu = () => {
                 <Button
                     background="#283047"
                     backgroundHover="#1e2535"
-                    paddingBlock="21px"
+                    paddingBlock="18px"
                     paddingInline="13px"
                     fontWeight="500"
                     borderRadius="13px"
@@ -55,7 +55,7 @@ export const Menu = () => {
                 <Button
                     background="#283047"
                     backgroundHover="#1e2535"
-                    paddingBlock="21px"
+                    paddingBlock="18px"
                     paddingInline="13px"
                     fontWeight="500"
                     borderRadius="13px"
@@ -74,7 +74,7 @@ export const Menu = () => {
                 <Button
                     background="#283047"
                     backgroundHover="#1e2535"
-                    paddingBlock="21px"
+                    paddingBlock="18px"
                     paddingInline="13px"
                     fontWeight="500"
                     borderRadius="13px"
@@ -93,7 +93,7 @@ export const Menu = () => {
                 <Button
                     background="#283047"
                     backgroundHover="#1e2535"
-                    paddingBlock="21px"
+                    paddingBlock="18px"
                     paddingInline="13px"
                     fontWeight="500"
                     borderRadius="13px"

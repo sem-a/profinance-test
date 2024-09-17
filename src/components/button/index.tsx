@@ -18,6 +18,7 @@ type Props = {
     alignItems?: string | undefined;
     justifyContent?: string | undefined;
     gap?: string | undefined;
+    onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined
 };
 
 export const Button: React.FC<Props> = ({
@@ -37,7 +38,8 @@ export const Button: React.FC<Props> = ({
     display,
     alignItems,
     justifyContent,
-    gap
+    gap,
+    onClick,
 }) => {
     const [hovered, setHovered] = useState(false);
     return (
@@ -65,6 +67,7 @@ export const Button: React.FC<Props> = ({
             onMouseLeave={() => {
                 setHovered(false);
             }}
+            onClick={onClick}
         >
             {children}
         </button>

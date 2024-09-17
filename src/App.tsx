@@ -5,8 +5,15 @@ import { Footer } from "./components/footer";
 import { Menu } from "./components/menu";
 import { BilletProfile } from "./components/billet-profile";
 import { H2 } from "./components/title";
-import { Source } from "@mui/icons-material";
+import {
+    Clear,
+    CreateNewFolder,
+    DriveFileMove,
+    IosShare,
+    Source,
+} from "@mui/icons-material";
 import { Billet, BilletSelect } from "./components/billet";
+import { Table } from "./components/table";
 
 type Option = {
     value: string;
@@ -28,18 +35,18 @@ function App() {
                 justifyContent="flex-start"
                 gap="50px"
             >
-                <div style={{ width: "30%" }}>
+                <div style={{ width: "30%", position: "fixed" }}>
                     <Menu />
                     <Footer />
                     <Button
                         margin="5px 0 0 0"
-                        paddingBlock="35px"
+                        paddingBlock="28px"
                         borderRadius="25px"
                     >
                         Связаться с нами
                     </Button>
                 </div>
-                <div style={{ width: "70%" }}>
+                <div style={{ width: "70%", marginLeft: "calc(30% + 50px)" }}>
                     <BilletProfile />
                     <Container
                         padding="60px 0px 38px 2px"
@@ -67,37 +74,8 @@ function App() {
                             <span style={{ marginTop: "2px" }}>Инструкции</span>
                         </Button>
                     </Container>
-                    <Container
-                        display="flex"
-                        alignItems="center"
-                        justifyContent="flex-start"
-                        gap="7px"
-                        padding="0"
-                    >
-                        <Billet
-                            id="barcode"
-                            width="178px"
-                            label="Баркод"
-                            placeholder="3245673819504819"
-                        />
-                        <Billet
-                            id="articul"
-                            width="173px"
-                            label="Артикул"
-                            placeholder="ДжЖсинМом0823"
-                        />
-                        <Billet
-                            id="size"
-                            width="62px"
-                            label="Размер"
-                            placeholder="44"
-                        />
-                        <BilletSelect
-                            id="category"
-                            width="121px"
-                            label="Категория"
-                            options={options}
-                        />
+                    <Container padding="0">
+                        <Table />
                     </Container>
                 </div>
             </Container>

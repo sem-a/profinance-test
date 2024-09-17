@@ -6,6 +6,7 @@
     background-color: white;
     padding: 7px 7px 7px 14px;
     border-radius: 25px;
+    border: 1px solid #E2E4E5;
 }
 label {
     font-size: 14px;
@@ -26,27 +27,17 @@ select {
     font-size: 14px;
     font-weight: 400;
     color: black;
-    background-color: white;
+    background-color: #f7f8f8;
     border-radius: 18px;
     padding: 20px 18px;
     text-align: center;
-
     -moz-appearance: none;
     -webkit-appearance: none;
     border: none;
     position: relative;
     outline: none;
-    padding: 5px;
-    padding-right: 40px;
 }
-
-select:after{
-	content: "";
-	display: block;
-	width: 25px;
-	height: 25px;
-	background-image: url("");
-	position: absolute;
-	right: 5px;
-	top: 5px;
+option {
+    background-color: #f7f8f8;
+    
 }
