@@ -27,6 +27,16 @@ export const Table = () => {
         pageSize: 25,
         page: 0,
     });
+    const [totalSumPrice, setTotalSumPrice] = useState<number>(0);
+    const [totalSumCount, setTottalSumCount] = useState<number>(0);
+
+    const calcSumm = () => {
+        const sumQuantity = tableRow.reduce((acc, current) => acc + current.product_quantity, 0)
+        const sumPrice = tableRow.reduce((acc, current) => acc + current.price, 0)
+
+        setTotalSumPrice(sumPrice);
+        setTottalSumCount(sumQuantity);
+    }
 
     const exportDataToCSV = () => {
         const csv = Papa.unparse(tableRow);
@@ -37,6 +47,26 @@ export const Table = () => {
         link.download = "product_data.csv";
         link.click();
         URL.revokeObjectURL(csvUrl);
+    };
+
+    const handleSaveJson = (jsonData: any, filename: any) => {
+        const fileData = JSON.stringify(jsonData);
+        const blob = new Blob([fileData], { type: "text/plain" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.download = `./${filename}.json`;
+        link.href = url;
+        link.click();
+    };
+
+    const handleProcessRowUpdate = (updatedRow: any, originalRow: any) => {
+        const newRows = [...tableRow];
+        const idx = newRows.findIndex((x) => x.id === originalRow.id);
+
+        newRows[idx] = updatedRow;
+        setTableRow(newRows);
+
+        return updatedRow;
     };
 
     const columns: GridColDef[] = [
@@ -198,6 +228,7 @@ export const Table = () => {
                             background="none"
                             backgroundHover="none"
                             color="#283047"
+                            onClick={() => {handleSaveJson(tableRow, 'DATA')}}
                         >
                             <CreateNewFolder />
                             <span style={{ marginTop: "2px" }}>
@@ -233,11 +264,15 @@ export const Table = () => {
                 editMode="row"
                 columns={columns}
                 rows={tableRow}
+                processRowUpdate={handleProcessRowUpdate}
+                onProcessRowUpdateError={(params) => {
+                    console.error(params);
+                }}
                 sx={{
-                    background: 'white',
-                    borderRadius: '28px',
-                    paddingInline: '21px',
-                    paddingBlock: '14px'
+                    background: "white",
+                    borderRadius: "28px",
+                    paddingInline: "21px",
+                    paddingBlock: "14px",
                 }}
             />
         </>
