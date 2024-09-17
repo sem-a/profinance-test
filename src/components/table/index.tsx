@@ -34,13 +34,13 @@ export const Table = () => {
     const [priceInput, setPriceInput] = useState<number | undefined>(undefined);
 
     const handleFiltrTable = () => {
+        setTableRow(data);
         if (
             !barcodeInput &&
             !brandInput &&
             !nameInput &&
             !priceInput
         ) {
-            setTableRow(data);
             return 0;
         }
 

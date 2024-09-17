@@ -6,26 +6,12 @@ import { Menu } from "./components/menu";
 import { BilletProfile } from "./components/billet-profile";
 import { H2 } from "./components/title";
 import {
-    Clear,
-    CreateNewFolder,
-    DriveFileMove,
-    IosShare,
     Source,
 } from "@mui/icons-material";
-import { Billet, BilletSelect } from "./components/billet";
 import { Table } from "./components/table";
 
-type Option = {
-    value: string;
-    placeholder: string;
-};
-
 function App() {
-    const [options, useOptions] = useState<Option[]>([
-        { value: "jeans", placeholder: "Джинсы" },
-        { value: "t-shirts", placeholder: "Футболки" },
-        { value: "shorts", placeholder: "Шорты" },
-    ]);
+
 
     return (
         <div className="App">
