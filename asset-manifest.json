@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/profinance-test/static/css/main.d78da1b9.css",
+    "main.js": "/profinance-test/static/js/main.f69c7f04.js",
+    "index.html": "/profinance-test/index.html",
+    "main.d78da1b9.css.map": "/profinance-test/static/css/main.d78da1b9.css.map",
+    "main.f69c7f04.js.map": "/profinance-test/static/js/main.f69c7f04.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d78da1b9.css",
+    "static/js/main.f69c7f04.js"
+  ]
+}
